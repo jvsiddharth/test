@@ -49,12 +49,6 @@ jobs:
           python -m venv venv
           source venv/bin/activate
 
-      - name: Install dependencies
-        continue-on-error: true
-        run: pip install -r requirements.txt
-
-      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
-
       - name: Upload artifact for deployment jobs
         continue-on-error: true
         uses: actions/upload-artifact@v4
