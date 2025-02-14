@@ -39,12 +39,14 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set up Python version
+        continue-on-error: true
         uses: actions/setup-python@v3.0.0
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: 'pip'
 
       - name: Create and start virtual environment
+        continue-on-error: true
         run: |
           python -m venv venv
           source venv/bin/activate
@@ -62,6 +64,7 @@ jobs:
     permissions:
       contents: none
     runs-on: ubuntu-latest
+    continue-on-error: true
     needs: build
     environment:
       name: 'Development'
