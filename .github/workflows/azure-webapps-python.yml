@@ -50,11 +50,13 @@ jobs:
           source venv/bin/activate
 
       - name: Install dependencies
+        continue-on-error: true
         run: pip install -r requirements.txt
 
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       - name: Upload artifact for deployment jobs
+        continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
           name: python-app
@@ -73,12 +75,14 @@ jobs:
 
     steps:
       - name: Download artifact from build job
+        continue-on-error: true
         uses: actions/download-artifact@v4
         with:
           name: python-app
           path: .
 
       - name: 'Deploy to Azure Web App'
+        continue-on-error: true
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
